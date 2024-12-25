@@ -1,0 +1,302 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2C3E50;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(45deg, #f39c12, #8e44ad, #3498db, #e74c3c);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Game Container */
+#game-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    background-color: #34495E;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1s ease-out;
+}
+
+/* Slide-in animation for game container */
+@keyframes slideIn {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
+}
+
+/* Title and Game Info */
+h1#welcome-message {
+    font-family: 'Comic Sans MS', cursive;
+    color: #f39c12;
+    font-size: 36px;
+    letter-spacing: 2px;
+    animation: glow 1.5s infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px #f39c12; }
+    50% { text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12; }
+    100% { text-shadow: 0 0 5px #fff, 0 0 10px #f39c12; }
+}
+
+/* Level Header */
+h2#level-header {
+    color: #e74c3c;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Timer Display */
+#timer {
+    font-size: 24px;
+    color: #8e44ad;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Notification Styling */
+#notification {
+    margin: 10px;
+    font-size: 18px;
+    color: #e91e63;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Maze and Cell Styling */
+#maze {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-top: 20px;
+}
+
+/* Level-Specific Maze Styling */
+.level-1 .cell {
+    background-color: #2ecc71; /* Green for Player */
+}
+
+.level-2 .cell {
+    background-color: #e74c3c; /* Red for Player */
+}
+
+.level-3 .cell {
+    background-color: #f39c12; /* Yellow for Player */
+}
+
+/* Cell States */
+.cell {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border: 2px solid #7f8c8d;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cell.P {
+    background-color: #2ecc71; /* Green for Player */
+    box-shadow: 0 0 15px #f39c12;
+}
+
+.cell.E {
+    background-color: #e74c3c; /* Red for Exit */
+    box-shadow: 0 0 15px #f39c12;
+}
+
+.cell.W {
+    background-color: #95a5a6; /* Gray for Wall */
+    box-shadow: 0 0 15px #f39c12;
+}
+
+.cell.T {
+    background-color: #f39c12; /* Yellow for Trap */
+    box-shadow: 0 0 15px #e74c3c;
+}
+
+/* Hover Effects for Cells */
+.cell:hover {
+    transform: scale(1.1);
+}
+
+.cell.P:hover {
+    background-color: #27ae60;
+}
+
+.cell.E:hover {
+    background-color: #c0392b;
+}
+
+.cell.W:hover {
+    background-color: #7f8c8d;
+}
+
+.cell.T:hover {
+    background-color: #f1c40f;
+}
+
+/* Button Styling */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* Styling for Restart Button */
+button#restart {
+    background-color: #e74c3c;
+    font-weight: bold;
+}
+
+button#restart:hover {
+    background-color: #c0392b;
+}
+
+button#restart:active {
+    transform: scale(1);
+}
+
+/* Level-Specific Styles for Each Level */
+.level-1 {
+    background-color: #2ecc71; /* Green level background */
+}
+
+.level-2 {
+    background-color: #e74c3c; /* Red level background */
+}
+
+.level-3 {
+    background-color: #f39c12; /* Yellow level background */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #game-container {
+        width: 90%;
+    }
+
+    .cell {
+        width: 50px;
+        height: 50px;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Footer Styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #34495E;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 20px;
+}
+
+footer button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+footer button:active {
+    transform: scale(1);
+}
+
+#contact-info {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: left;
+}
+
+#contact-info p {
+    margin: 5px 0;
+}
+
+#contact-info a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+#contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Hide contact info initially */
+.hidden {
+    display: none;
+}
+
+/* Animations for Cells */
+.cell.P {
+    transition: transform 0.5s ease-in-out;
+}
+
+.cell.P:active {
+    transform: scale(1.2);
+}
+
+/* Fancy Glow Effect for Notification */
+#notification {
+    animation: glowEffect 1.5s infinite;
+}
+
+@keyframes glowEffect {
+    0% { color: #f39c12; text-shadow: 0 0 5px #f39c12, 0 0 10px #f39c12; }
+    50% { color: #e74c3c; text-shadow: 0 0 10px #e74c3c, 0 0 15px #e74c3c; }
+    100% { color: #f39c12; text-shadow: 0 0 5px #f39c12, 0 0 10px #f39c12; }
+}
+

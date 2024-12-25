@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Escape</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="game-container">
+        <h1 id="welcome-message">Welcome to <span>Dungeon Escape</span></h1>
+        <p id="health">Health: {{ health }}</p>
+        <p>Level: {{ level }}</p>
+        <div id="notification">Let the adventure begin!</div>
+        <div id="maze">
+            {% for row in maze %}
+                {% for cell in row %}
+                    <div class="cell {{ cell }}">{{ cell if cell != '.' }}</div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div id="controls">
+            <button onclick="movePlayer('w')">Up</button>
+            <button onclick="movePlayer('a')">Left</button>
+            <button onclick="movePlayer('s')">Down</button>
+            <button onclick="movePlayer('d')">Right</button>
+            <button onclick="restartLevel()">Restart</button>
+            <button onclick="toggleContact()">Contact Developer</button> <!-- Added button -->
+        </div>
+        <div id="contact-info" style="display:none;">
+            <h2>Contact Developer</h2>
+            <textarea id="contact-message" placeholder="Write your message here..."></textarea>
+            <br>
+            <button onclick="sendEmail()">Send Email</button>
+            <button onclick="sendWhatsApp()">Send WhatsApp Message</button>
+            <button onclick="closeContact()">Close</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
